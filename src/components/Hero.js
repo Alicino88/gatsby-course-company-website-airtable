@@ -4,10 +4,26 @@ import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 const Hero = () => {
   return (
-    <h2>hero component</h2>
+    <Wrapper>
+      <StaticImage
+        src="../images/mainBcg.png"
+        layout="fullWidth"
+        placeholder="tracedSVG"
+        className="img"
+        alt="color palette"
+      />
+      <div className="info">
+        <article>
+          <h3>If you can dream it, we can create it</h3>
+          <h1>let your home be inique and stylish</h1>
+          <Link to="/projects">Projects</Link>
+        </article>
+      </div>
+    </Wrapper>
   )
 }
 
+/*the Wrapper element is a section element once you check with inspection tool */
 const Wrapper = styled.section`
   height: 100vh;
   margin-top: -5rem;
