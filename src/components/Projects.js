@@ -5,11 +5,41 @@ import styled from 'styled-components'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import SearchButtons from './SearchButtons'
 
-const Projects = () => {
-  
-
+//projects is all the data coming from the page query in index.js, here we give it an alias of data
+const Projects = ({ projects: data, title, page }) => {
+  const [projects, setProjects] = React.useState(data)
   return (
-    <h2>projects</h2>
+    <Wrapper className="section">
+      {/*title prop comes from index.js and we pass it down to Title component */}
+      <Title title={title || 'projects'} />
+      <div class="section-center">
+        {projects.map(item => {
+          const { id } = item
+          const { name, type, image } = item.data
+          return (
+            <article key={id}>
+              <div className="container">
+                <GatsbyImage
+                  image={getImage(image.localFiles[0])}
+                  alt={name}
+                  className="img"
+                ></GatsbyImage>
+                <div className="info">
+                  <p>-{type}-</p>
+                  <h3>{name}</h3>
+                </div>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+      {/*if the prop page is not passed then I want to show the button to projects page */}
+      {!page && (
+        <Link to="/projects" className="btn">
+          all projects
+        </Link>
+      )}
+    </Wrapper>
   )
 }
 
