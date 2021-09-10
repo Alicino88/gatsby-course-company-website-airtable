@@ -24,6 +24,7 @@ const HomePage = ({ data }) => {
       <About />
       {/*the queried data are passed as a prop to the Projects components */}
       <Projects projects={projects} title="latest projects" />
+      <Survey />
       <Slider customers={nodes} />
     </Layout>
   )
