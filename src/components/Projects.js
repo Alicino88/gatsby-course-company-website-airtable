@@ -8,10 +8,21 @@ import SearchButtons from './SearchButtons'
 //projects is all the data coming from the page query in index.js, here we give it an alias of data
 const Projects = ({ projects: data, title, page }) => {
   const [projects, setProjects] = React.useState(data)
+
+  const setBackToAll = () => {
+    setProjects(data)
+  }
   return (
     <Wrapper className="section">
       {/*title prop comes from index.js and we pass it down to Title component */}
       <Title title={title || 'projects'} />
+      {page && (
+        <SearchButtons
+          projects={data}
+          setProjects={setProjects}
+          setBackToAll={setBackToAll}
+        />
+      )}
       <div class="section-center">
         {projects.map(item => {
           const { id } = item
