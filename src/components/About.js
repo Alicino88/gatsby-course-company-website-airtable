@@ -4,6 +4,8 @@ import Title from './Title'
 import services from '../constants/services'
 const About = () => {
   return (
+    /*note that the class "section" comes from the main css inside the root-wrapper */
+
     <Wrapper className="section">
       <Title title="about us" />
       <div className="section-center">
